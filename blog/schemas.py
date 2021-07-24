@@ -2,6 +2,20 @@ from pydantic import BaseModel
 
  # A pydantic model
 class Blog(BaseModel):
-    id: int
     title: str
     body: str
+
+class ShowBlog(Blog):
+    class Config():
+        orm_mode=True
+
+class User(BaseModel):
+    name: str
+    email: str
+    password: str
+
+class ShowUser(BaseModel):
+    name: str
+    email: str
+    class Config():
+        orm_mode = True
